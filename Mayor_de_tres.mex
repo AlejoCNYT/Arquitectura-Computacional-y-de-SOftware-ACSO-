@@ -1,0 +1,41 @@
+	input
+    	store a		//read a
+    	Input
+	Store b		//read b
+    	Input
+	Store c		//read c
+    
+    	Load a
+    	Subt b			
+    	Skipcond 000	//a<b
+	Jump a>b
+	Jump b<c	
+b<c,	load c			
+    	Subt b			
+    	Skipcond 800	//c>b
+	Jump May_b
+	Jump May_c
+
+a>b,	Load a
+	Subt c			
+        Skipcond 800	//a>c (and a>b)
+	Jump c>b	//c>a (and )
+	Jump May_a
+May_a,  Load a
+        Output
+	Halt
+c>b,	Load c
+	Subt b
+	Skipcond 800	//c>b
+	Jump May_b
+	Jump May_c	
+May_c,	Load c
+	Output
+	Halt
+May_b,	Load b
+	Output 
+	Halt
+
+a, DEC 0
+b, DEC 1
+c, DEC 2

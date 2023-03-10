@@ -1,0 +1,63 @@
+     Assembly listing for: Mayor_de_tres.mas
+                Assembled: Thu Mar 09 21:51:38 COT 2023
+
+000 5000 |         INPUT             
+001 2023 |         STORE a          //read a
+002 5000 |         INPUT             
+003 2024 |         STORE b          //read b
+004 5000 |         INPUT             
+005 2025 |         STORE c          //read c
+         |                              
+006 1023 |         LOAD a            
+007 4024 |         SUBT b            
+008 8000 |         SKIPCOND 000     //a<b
+009 9010 |         JUMP a>b          
+00A 900B |         JUMP b<c          
+00B 1025 |  b<c    LOAD c            
+00C 4024 |         SUBT b            
+00D 8800 |         SKIPCOND 800     //c>b
+00E 9020 |         JUMP May_b        
+00F 901D |         JUMP May_c        
+         |                          
+010 1023 |  a>b    LOAD a            
+011 4025 |         SUBT c            
+012 8800 |         SKIPCOND 800     //a>c (and a>b)
+013 9018 |         JUMP c>b         //c>a (and )
+014 9015 |         JUMP May_a        
+015 1023 |  May_a  LOAD a            
+016 6000 |         OUTPUT            
+017 7000 |         HALT              
+018 1025 |  c>b    LOAD c            
+019 4024 |         SUBT b            
+01A 8800 |         SKIPCOND 800     //c>b
+01B 9020 |         JUMP May_b        
+01C 901D |         JUMP May_c        
+01D 1025 |  May_c  LOAD c            
+01E 6000 |         OUTPUT            
+01F 7000 |         HALT              
+020 1024 |  May_b  LOAD b            
+021 6000 |         OUTPUT            
+022 7000 |         HALT              
+         |                          
+023 0000 |  a      DEC 0             
+024 0001 |  b      DEC 1             
+025 0002 |  c      DEC 2             
+
+Assembly successful.
+
+         SYMBOL TABLE
+         --------------------------------------------------
+          Symbol | Defined | References 
+         --------+---------+-------------------------------
+          May_a  |   015   | 014
+          May_b  |   020   | 00E, 01B
+          May_c  |   01D   | 00F, 01C
+          a      |   023   | 001, 006, 010, 015
+          a>b    |   010   | 009
+          b      |   024   | 003, 007, 00C, 019, 020
+          b<c    |   00B   | 00A
+          c      |   025   | 005, 00B, 011, 018, 01D
+          c>b    |   018   | 013
+         --------------------------------------------------
+
+

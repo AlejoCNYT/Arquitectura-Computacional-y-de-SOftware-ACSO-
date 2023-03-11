@@ -1,3 +1,10 @@
+/Lab7a
+/Autor: Daniel Alejandro Acero Varela
+/Fecha: 10/03/2023
+/Descripcion:
+/Usando lenguaje ensamblador de MARIE, leer tres números a,b,c y  escribir el mayor valor.
+/
+
 	input
     	store a		//read a
     	Input

@@ -1,0 +1,91 @@
+﻿/ Lab7b 
+/ Nombre: Daniel Alejandro Acero Varela
+/ Fecha: 10/03/2023
+/ Descripcion
+/ Usando lenguaje ensamblador de MARIE, leer tres coeficientes a, b, c, leer el valor de X y evaluar el polinomio a * X ^ 2 + b * X + c, mostrar el resultado en pantalla
+/
+		Input
+		Store a
+        Store Mult_a
+		Input
+		Store b
+        Store Mult_b
+		Input
+		Store c
+		Input
+		Store x
+        Store Mult_x
+        Subt one
+        Skipcond 400	//x = 1
+        Jump x=!1
+		Jump x=1
+x=1,	Load Mult_a
+		Add Mult_b
+		Add c
+        Store res
+        Output
+		Halt
+x=!1,	Load x
+        Subt one
+        Store x
+		Jump M_bx
+M_bx,	Load x
+		Subt one
+		Store x
+		Load b
+		Add Mult_b
+		Store b
+		Load x
+		Skipcond 800	//x > 0
+		Jump bx
+		Jump M_bx
+bx,		Load b
+		//Output
+		Load x
+		Add Mult_x
+        Store x
+        Subt one
+        Store contx
+		Jump x^2
+x^2,	Load x
+        add Mult_x
+        Store x
+		Load contx
+		subt one	
+        Store contx
+        Skipcond 800	//Mult_x > 0
+		Jump xx
+        Jump x^2
+xx,		Load x
+		Store Mult_x
+		//output
+        subt one
+        Store x
+		Jump ax^2
+ax^2,	Load a
+		Add Mult_a
+		Store a
+        Load x
+        Subt one
+        Store x
+        Skipcond 800	//x > 0 
+		Jump res
+        Jump ax^2
+res,	load a
+		//Output
+		Add b
+		Add c	
+        Store res
+        output
+        Halt
+
+a,		DEC 312
+b,		DEC 414
+c,		DEC 432
+x,		DEC 523
+Mult_a, DEC	636
+Mult_b, DEC 725
+Mult_x, DEC 844
+one,	DEC 1
+cero, 	DEC 0
+contx,  DEC 523
